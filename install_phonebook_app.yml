@@ -8,6 +8,7 @@
   vars:
     pip_install_packages:
       - name: docker
+      - name; docker-compose
   pre_tasks:
     - block:
       - name: Install EPEL repo

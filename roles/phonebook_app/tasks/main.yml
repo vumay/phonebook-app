@@ -54,9 +54,9 @@
   build:
     context: .
     dockerfile: Dockerfile-app
+    restart_policy: always
   depends_on:
     - phonebook-mysql
   ports "80:8181"
-  restart: always
   tags:
     - build

@@ -42,7 +42,7 @@
 
 - name: Build api image
   docker_image:
-    path: "{{ home }}/phonebook/mysql"
+    path: "{{ home }}/phonebook/"
     name: "{{ docker_hub_login }}/phonebook-mysql"
     push: yes
     tag: v1

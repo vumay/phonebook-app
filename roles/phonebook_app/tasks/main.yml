@@ -40,24 +40,9 @@
   tags:
     - build
 
-- name: Build api image
-  container_name:
-  build:
-    context: .
-    dockerfile: Dockerfile-mysql
-    restart_policy: always
-  tags:
-    - build
-
-- name: Build api image
-  container_name:
-  build:
-    context: .
-    dockerfile: Dockerfile-app
-    restart_policy: always
-  depends_on:
-    - phonebook-mysql
-  ports:
-    - "80:8181"
-  tags:
-    - build
+- name: Deploy docker compose
+  docker_compose:
+    project_src: "{{ home }}/phonebook/"
+    files:
+      - ".docker-compose.yml"
+    state: present

@@ -99,7 +99,7 @@
     restart_policy: always
     env:
       DATABASE_HOST: "phonebook-db"
-      DATABASE_USER: "dev
+      DATABASE_USER: "dev"
       DATABASE_PASSWORD: "dev"
       DATABASE_NAME: "crud_flask"
     networks:

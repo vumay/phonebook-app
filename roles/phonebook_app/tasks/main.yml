@@ -57,6 +57,7 @@
     restart_policy: always
   depends_on:
     - phonebook-mysql
-  ports "80:8181"
+  ports:
+    - "80:8181"
   tags:
     - build

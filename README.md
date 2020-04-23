@@ -1,1 +1,1 @@
-# bulletin-board-app_jenkins_CI_CD
+# A simple CRUD application using Flask and MySQL

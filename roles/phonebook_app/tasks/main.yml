@@ -77,6 +77,13 @@
     image: vumay/phonebook-mysql:v1
     state: started
     restart_policy: always
+    volumes:
+      - db-data:/var/lib/mysql
+    env:
+      MYSQL_ROOT_PASSWORD: "root-vumay"
+      MYSQL_DATABASE: "crud_flask"
+      MYSQL_USER: "dev"
+      MYSQL_PASSWORD: "dev"
     networks:
       - name: phonebook-network
   tags:
@@ -90,6 +97,11 @@
     image: vumay/phonebook-app:v1
     state: started
     restart_policy: always
+    env:
+      DATABASE_HOST: "phonebook-db"
+      DATABASE_USER: "dev
+      DATABASE_PASSWORD: "dev"
+      DATABASE_NAME: "crud_flask"
     networks:
       - name: phonebook-network
     ports:

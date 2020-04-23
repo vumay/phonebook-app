@@ -30,7 +30,7 @@
 
 - name: retrieve bulletin app code source
   git:
-    repo: https://github.com/vumay/phonebook-app.git
+    repo: https://github.com/diranetafen/crud-application-using-flask-and-mysql.git 
     dest: "{{ home }}/phonebook/"
     accept_hostkey: yes
     force: yes

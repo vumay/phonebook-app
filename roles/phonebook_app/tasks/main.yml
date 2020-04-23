@@ -42,7 +42,7 @@
 
 - name: Build api image
   docker_image:
-    path: "{{ home }}/phonebook/"
+    path: "{{ home }}/phonebook/Dockerfile-mysql"
     name: "{{ docker_hub_login }}/phonebook-mysql"
     push: yes
     tag: v1
@@ -51,7 +51,7 @@
 
 - name: Build api image and push it to Docker Hub
   docker_image:
-    path: "{{ home }}/phonebook-app"
+    path: "{{ home }}/phonebook-app/Dockerfile-app"
     name: "{{ docker_hub_login }}/phonebook-app"
     push: yes
     tag: v1

@@ -52,7 +52,8 @@
 
 - name: Build api image and push it to Docker Hub
   docker_image:
-    path: "{{ home }}/phonebook-app/Dockerfile-app"
+    path: "{{ home }}/phonebook-app/"
+    dockerfile: Dockerfile-app
     name: "{{ docker_hub_login }}/phonebook-app"
     push: yes
     tag: v1

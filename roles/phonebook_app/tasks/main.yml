@@ -43,3 +43,5 @@
 - name: Build api image
   docker_compose:
     project_src: "{{ home }}/phonebook/"
+  tags:
+  - deploy

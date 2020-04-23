@@ -45,7 +45,7 @@
   build:
     context: .
     dockerfile: Dockerfile-mysql
-  restart: always
+    restart_policy: always
   tags:
     - build
 

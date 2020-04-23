@@ -40,9 +40,53 @@
   tags:
     - build
 
-- name: Deploy docker compose
-  docker_compose:
-    project_src: "{{ home }}/phonebook/"
-    files:
-      - ".docker-compose.yml"
-    state: present
+- name: Build api image
+  docker_image:
+    path: "{{ home }}/phonebook/mysql"
+    name: "{{ docker_hub_login }}/phonebook-mysql""
+    push: yes
+    tag: v1
+  tags:
+    - build
+
+- name: Build api image and push it to Docker Hub
+  docker_image:
+    path: "{{ home }}/phonebook-app"
+    name: "{{ docker_hub_login }}/phonebook-app"
+    push: yes
+    tag: v1
+  tags:
+    - build
+
+# docker network 
+
+- name: crete docker network to interconnect containers
+  docker_network:
+    name: phonebook-network
+
+# deploy api
+
+- name: Deploy api
+  docker_container:
+    name: phonebook-db 
+    hostname: phonebook-db
+    image: vumay/phonebook-mysql:v1
+    state: started
+    restart_policy: always
+    networks:
+      - name: phonebook-network
+    ports:
+      - "4000:5000"
+
+# deploy frontend
+
+- name: Deploy frontend
+  docker_container:
+    name: phonebook-app
+    image: phonebook-app:v1
+    state: started
+    restart_policy: always
+    networks:
+      - name: phonebook-network
+    ports:
+      - "80:8181"

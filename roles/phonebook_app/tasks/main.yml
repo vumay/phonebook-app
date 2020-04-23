@@ -1,0 +1,73 @@
+---
+
+# This playbook is used to deploy student-list application based on Docker
+
+# build and push builded images
+
+- name: Log into DockerHub
+  docker_login:
+    username: "{{ docker_hub_login }}"
+    email: "{{ docker_hub_email }}"
+    password: "{{ docker_hub_password }}"
+  tags:
+    - build
+- name: create project directory
+  file:
+    path: "{{ home }}/phonebook"
+    state: directory
+  tags:
+    - build
+    - deploy
+
+- name: copy devops private key file
+  copy:
+    content: '{{ gitlab_private_key }}'
+    dest: "{{ home }}/.ssh/id_rsa"
+    owner: centos
+  tags:
+    - build
+    - deploy
+
+- name: retrieve bulletin app code source
+  git:
+    repo: "{{ phonebook-app-app_source_repo }}""
+    dest: "{{ home }}/phonebook/"
+    accept_hostkey: yes
+    force: yes
+    recursive: no
+    key_file: "{{ home }}/.ssh/id_rsa"
+    version: master
+  tags:
+    - build
+    - deploy
+
+- name: Build api image
+  docker_image:
+    path: "{{ home }}/phonebook/"
+    name: "{{ docker_hub_login }}/phonebook-app"
+    tag: v1
+  tags:
+    - build
+
+- name: Push image to Docker Hub
+  docker_image:
+    path: "{{ home }}/phonebook/"
+    name: "{{ docker_hub_login }}/phonebook-app"
+    push: yes
+    tag: v1
+  tags:
+    - push
+
+
+# deploy api
+
+- name: phonebook-app
+  docker_container:
+    name: phonebook-app
+    hostname: phonebook-app
+    image: vumay/phonebook-app:v1
+    state: started
+    ports:
+      - "80:8181"
+  tags:
+    - deploy

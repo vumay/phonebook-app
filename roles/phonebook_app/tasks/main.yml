@@ -41,7 +41,22 @@
     - build
 
 - name: Build api image
-  docker_compose:
-    project_src: "{{ home }}/phonebook/"
+  container_name:
+  build:
+    context: .
+    dockerfile: Dockerfile-mysql
+  restart: always
   tags:
-  - deploy
+    - build
+
+- name: Build api image
+  container_name:
+  build:
+    context: .
+    dockerfile: Dockerfile-app
+  depends_on:
+    - phonebook-mysql
+  ports "80:8181"
+  restart: always
+  tags:
+    - build

@@ -87,7 +87,7 @@
 - name: Deploy frontend
   docker_container:
     name: phonebook-app
-    image: phonebook-app:v1
+    image: vumay/phonebook-app:v1
     state: started
     restart_policy: always
     networks:

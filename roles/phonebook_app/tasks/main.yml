@@ -65,6 +65,8 @@
 - name: crete docker network to interconnect containers
   docker_network:
     name: phonebook-network
+  tags:
+    - build
 
 # deploy api
 
@@ -77,8 +79,8 @@
     restart_policy: always
     networks:
       - name: phonebook-network
-    ports:
-      - "4000:5000"
+  tags:
+    - build
 
 # deploy frontend
 
@@ -92,3 +94,5 @@
       - name: phonebook-network
     ports:
       - "80:8181"
+  tags:
+    - build

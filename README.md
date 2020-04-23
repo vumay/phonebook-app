@@ -1,1 +1,1 @@
-# A simple CRUD application using Flask and MySQL
+# A simple CRUD application 

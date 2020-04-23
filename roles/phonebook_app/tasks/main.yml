@@ -31,7 +31,7 @@
 - name: retrieve bulletin app code source
   git:
     repo: "{{ phonebook-app-app_source_repo }}"
-    dest: "{{ home }}/phonebook/"
+    dest: "{{ home }}/phonebook"
     accept_hostkey: yes
     force: yes
     recursive: no
@@ -39,7 +39,6 @@
     version: master
   tags:
     - build
-    - deploy
 
 - name: Build api image
   docker_image:

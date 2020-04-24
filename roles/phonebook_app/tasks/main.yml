@@ -74,7 +74,7 @@
   docker_container:
     name: phonebook-mysql
     hostname: phonebook-mysql
-   image: vumay/phonebook-mysql:v1
+    image: vumay/phonebook-mysql:v1
     state: started
     restart_policy: always
     volumes:

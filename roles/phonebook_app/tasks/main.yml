@@ -86,6 +86,8 @@
       MYSQL_PASSWORD: "dev"
     networks:
       - name: phonebook-network
+    ports:
+      - "3306:3306"
   tags:
     - build
 

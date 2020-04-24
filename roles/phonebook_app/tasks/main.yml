@@ -72,9 +72,9 @@
 
 - name: Deploy api
   docker_container:
-    name: phonebook-db 
-    hostname: phonebook-db
-    image: vumay/phonebook-mysql:v1
+    name: phonebook-mysql
+    hostname: phonebook-mysql
+   image: vumay/phonebook-mysql:v1
     state: started
     restart_policy: always
     volumes:
@@ -100,7 +100,7 @@
     state: started
     restart_policy: always
     env:
-      DATABASE_HOST: "phonebook-db"
+      DATABASE_HOST: "phonebook-mysql"
       DATABASE_USER: "dev"
       DATABASE_PASSWORD: "dev"
       DATABASE_NAME: "crud_flask"

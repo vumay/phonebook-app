@@ -1,15 +1,11 @@
 # Full integration chain DevSecOps
 
-## Build status (badge)
-
-[![Build Status](http://ec2-54-208-88-125.compute-1.amazonaws.com:8080/buildStatus/icon?job=fack-backend-CICD)](http://ec2-54-208-88-125.compute-1.amazonaws.com:8080/job/fack-backend-CICD/)
 
 ## Tools 
 
 - Cloud : AWS, (EC2, CloudFormation, IAM, AWSCLI...)
 - Container Engine : Docker
 - Configuration Managment: Ansible
-- Testing : Jmeter
 - Source Code Managment : GitLab
 - Scheduling : Jenkins
 - Security: Clair, Gauntlt
@@ -110,10 +106,4 @@ Continuous Delivery on the **”Master”** branch:
 
 ### Technical word
 
-Docker, docker-compose, Ansible, Tags, Playbooks, Roles, Galaxy, Jenkins, Shared-library, Pipeline, Notification, linter, DevSecOps, Clair, Gauntlt, Jmeter
-
-### Reference repository
-
-+ [Source code development](https://github.com/samiamoura/devsecops-phonebook/tree/master/phonebook-application "Source code development")
-+ [Shared-library](https://github.com/samiamoura/devsecops-phonebook/tree/master/shared-library "Shared-library")
-+ [Docker Jmeter](https://github.com/samiamoura/devsecops-phonebook/tree/master/docker-jmeter "Docker Jmeter")
+Docker, docker-compose, Ansible, Tags, Playbooks, Roles, Galaxy, Jenkins, Shared-library, Pipeline, Notification, linter, DevSecOps, Clair, Gauntlt
